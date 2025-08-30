@@ -15,19 +15,4 @@ config ZMK_BLE
     default n
 endif
 
-if BOARD_K03
 
-if USB
-
-config USB_NRFX
-    default y
-
-config USB_DEVICE_STACK
-    default y
-
-endif # USB
-
-# config BT_CTLR
-#     default BT
-
-endif # BOARD_K03_LEFT || BOARD_K03_RIGHT

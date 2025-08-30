@@ -1,0 +1,9 @@
+/dts-v1/;
+#include <rpi_pico.dtsi>
+#include "k03.dtsi"
+
+/ {
+    model = "K03";
+    compatible = "zmk,k03";
+};
+

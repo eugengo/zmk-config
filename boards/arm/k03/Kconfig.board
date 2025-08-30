@@ -4,10 +4,8 @@
 
 config BOARD_K03_LEFT
     bool "k03 left"
-    depends on SOC_SERIES_YOUR_SOC_SERIES_HERE
-    select SOC_PART_NUMBER_ABCDEFGH
+    depends on SOC_RP2040
 
 config BOARD_K03_RIGHT
     bool "k03 right"
-    depends on SOC_SERIES_YOUR_SOC_SERIES_HERE
-    select SOC_PART_NUMBER_ABCDEFGH
+    depends on SOC_RP2040

@@ -4,7 +4,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
-// zmk-config/boards/arm/k03_v2/k03_v2.keymap
+// zmk-config/boards/arm/k03/k03.keymap
 
 / {
     keymap {

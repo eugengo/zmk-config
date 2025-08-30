@@ -1,4 +1,4 @@
 ---
 include:
-  - board: k03
+  - board: rpi_pico
 

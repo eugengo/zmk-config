@@ -1,4 +1,7 @@
 ---
 include:
   - board: k03
+  - keymap: k03.keymap
+  - dts_overlays:
+    - boards/arm/k03/k03.overlay
 

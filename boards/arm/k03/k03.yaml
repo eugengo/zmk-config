@@ -6,6 +6,7 @@ identifier: k03
 name: k03
 type: mcu
 arch: arm
+soc: rp2040
 toolchain:
   - zephyr
   - gnuarmemb

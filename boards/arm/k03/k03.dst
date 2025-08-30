@@ -1,5 +1,4 @@
-/dts-v1/;
-#include <rpi_pico.dtsi>
+#include <rp2040.dtsi>
 #include "k03.dtsi"
 
 / {

@@ -1,4 +1,3 @@
-//#include <rp2040.dtsi>
 /dts-v1/;
 #include "k03.dtsi"
 

@@ -1,88 +1,66 @@
-// zmk-config/boards/arm/k03/k03.dts
-
-// k03.dtsi
-
-#include <rp2040.dtsi>
-#include "k03-layouts.dtsi"
-
-&gpio0 {
-    status = "okay";
-};
-
-&i2c1 {
-    status = "okay";
-    scl-pin = <3>; // GP3
-    sda-pin = <2>; // GP2
-
-    oled0: ssd1306@3c {
-        compatible = "solomon,ssd1306";
-        reg = <0x3c>;
-        width = <128>;
-        height = <32>;
-        rotation = <270>;
-        brightness = <30>;
-        font = <&custom_font>;
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
     };
 
-    oled1: ssd1306@3d {
-        compatible = "solomon,ssd1306";
-        reg = <0x3d>;
-        width = <128>;
-        height = <32>;
-        rotation = <270>;
-        brightness = <30>;
-        font = <&custom_font>;
+    /* ================= Matrix ================= */
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        row-gpios = <&pio0 4 GPIO_ACTIVE_LOW>,
+                    <&pio0 5 GPIO_ACTIVE_LOW>,
+                    <&pio0 6 GPIO_ACTIVE_LOW>,
+                    <&pio0 7 GPIO_ACTIVE_LOW>,
+                    <&pio0 8 GPIO_ACTIVE_LOW>;
+        col-gpios = <&pio0 9 GPIO_ACTIVE_LOW>,
+                    <&pio0 10 GPIO_ACTIVE_LOW>,
+                    <&pio0 11 GPIO_ACTIVE_LOW>,
+                    <&pio0 12 GPIO_ACTIVE_LOW>,
+                    <&pio0 13 GPIO_ACTIVE_LOW>,
+                    <&pio0 14 GPIO_ACTIVE_LOW>;
+        diode-direction = <COL2ROW>;
     };
-};
 
-ws2812: ws2812@0 {
-    compatible = "worldsemi,ws2812";
-    pin = <28>; // GP28
-    num-leds = <2>;
-    split = <1 1>;
-    max-brightness = <150>;
-    default-brightness = <0>;
-    default-saturation = <255>;
-    status = "okay";
-};
+    /* ================= Split ================= */
+    split0: split {
+        compatible = "zmk,split";
+        split-role = "central";  // левый или правый
+        hand-detect-gpios = <&pio0 29 GPIO_ACTIVE_LOW>;
 
-hand_detect: gpio_hand {
-    compatible = "zmk,gpio-hand-detect";
-    gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
-};
+        uart {
+            tx-pin = <0>;   // SERIAL_USART_TX_PIN
+            rx-pin = <1>;   // SERIAL_USART_RX_PIN
+        };
+    };
 
-kscan0: kscan {
-    compatible = "zmk,kscan-gpio-matrix";
-    row-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>, <&gpio0 5 GPIO_ACTIVE_LOW>, <&gpio0 6 GPIO_ACTIVE_LOW>,
-                <&gpio0 7 GPIO_ACTIVE_LOW>, <&gpio0 8 GPIO_ACTIVE_LOW>, <&gpio0 9 GPIO_ACTIVE_LOW>,
-                <&gpio0 10 GPIO_ACTIVE_LOW>, <&gpio0 11 GPIO_ACTIVE_LOW>, <&gpio0 12 GPIO_ACTIVE_LOW>, <&gpio0 13 GPIO_ACTIVE_LOW>;
-    col-gpios = <&gpio0 14 GPIO_ACTIVE_LOW>, <&gpio0 15 GPIO_ACTIVE_LOW>, <&gpio0 16 GPIO_ACTIVE_LOW>,
-                <&gpio0 17 GPIO_ACTIVE_LOW>, <&gpio0 18 GPIO_ACTIVE_LOW>, <&gpio0 19 GPIO_ACTIVE_LOW>;
-    diode-direction = "col2row";
-    debounce-press-ms = <5>;
-    debounce-release-ms = <5>;
-};
+    /* ================= OLED ================= */
+    &i2c1 {
+        status = "okay";
+        scl-pin = <3>;   // I2C1_SCL_PIN
+        sda-pin = <2>;   // I2C1_SDA_PIN
 
-uart0: uart {
-    compatible = "zephyr,uart";
-    current-speed = <19200>;
-    tx-pin = <0>; // GP0
-    rx-pin = <1>; // GP1
-    status = "okay";
-};
+        oled0: ssd1306@3c {
+            compatible = "solomon,ssd1306fb";
+            reg = <0x3c>;
+            width = <128>;
+            height = <32>;
+        };
+    };
 
-custom_font: font@0 {
-    compatible = "zmk,font";
-    // data = [ ... HEX from your font[] ... ];
-    width = <6>;
-    height = <8>;
-};
+    /* ================= RGB ================= */
+    &rgb {
+        compatible = "zmk,ws2812";
+        label = "RGB";
+        chain-length = <2>;          // RGBLIGHT_LED_COUNT
+        data-gpios = <28>;           // ws2812.pin
+        spi-max-frequency = <4000000>;
+    };
 
-chosen {
-    zmk,kscan = &kscan0;
-    zmk,display = &oled0;
-    zmk,display2 = &oled1;
-    zmk,led = &ws2812;
-    zmk,physical-layout = &k03_v2_physical_layout;
+    /* ================= Encoder ================= */
+    &rotary0 {
+        compatible = "zmk,rotary-encoder";
+        pin_a = <27>;
+        pin_b = <26>;
+        resolution = <4>;            // ENCODER_RESOLUTION
+    };
 };
 

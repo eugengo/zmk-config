@@ -1,8 +1,0 @@
-#include <rp2040.dtsi>
-#include "k03.dtsi"
-
-/ {
-    model = "K03";
-    compatible = "zmk,k03";
-};
-

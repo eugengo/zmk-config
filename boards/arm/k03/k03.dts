@@ -1,0 +1,45 @@
+#include <rp2040.dtsi>
+#include "k03.dtsi"
+
+
+/ {
+    chosen {
+        zmk,keymap = &keymap;
+    };
+
+    keyboard {
+        matrix {
+            row_gpios = <&gpio 4 0 0 &gpio 5 0 0 &gpio 6 0 0 &gpio 7 0 0 &gpio 8 0 0>;
+            col_gpios = <&gpio 9 0 0 &gpio 10 0 0 &gpio 11 0 0 &gpio 12 0 0 &gpio 13 0 0 &gpio 14 0 0>;
+            diodes = "col2row";
+        };
+
+        split {
+            role = "central";
+            tx_pin = <&gpio 29 0>;
+            rx_pin = <&gpio 29 0>;
+        };
+
+        encoder0: encoder@0 {
+            compatible = "zmk,rotary-encoder";
+            a-gpio = <&gpio 27 0>;
+            b-gpio = <&gpio 26 0>;
+            resolution = <4>;
+        };
+
+        leds {
+            compatible = "zmk,ws2812";
+            pin = <&gpio 28 0>;
+            count = <2>;
+        };
+
+        display0: oled@0 {
+            compatible = "zmk,ssd1306";
+            width = <128>;
+            height = <32>;
+            update-interval-ms = <200>;
+        };
+    };
+};
+
+

@@ -14,12 +14,14 @@
 						, <&pio0 7 GPIO_ACTIVE_LOW>
 						, <&pio0 8 GPIO_ACTIVE_LOW>
 						;
-        col-gpios = <&pio0 9 GPIO_ACTIVE_LOW>,
-                    <&pio0 10 GPIO_ACTIVE_LOW>,
-                    <&pio0 11 GPIO_ACTIVE_LOW>,
-                    <&pio0 12 GPIO_ACTIVE_LOW>,
-                    <&pio0 13 GPIO_ACTIVE_LOW>,
-                    <&pio0 14 GPIO_ACTIVE_LOW>;
+        col-gpios 
+						= <&pio0 9 GPIO_ACTIVE_LOW>
+						, <&pio0 10 GPIO_ACTIVE_LOW>
+						, <&pio0 11 GPIO_ACTIVE_LOW>
+						, <&pio0 12 GPIO_ACTIVE_LOW>
+						, <&pio0 13 GPIO_ACTIVE_LOW>
+						,<&pio0 14 GPIO_ACTIVE_LOW>
+						;
         diode-direction = <COL2ROW>;
     };
 

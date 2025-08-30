@@ -1,0 +1,58 @@
+// This file was generated from a template. Edit it to match your keyboard.
+// See https://zmk.dev/docs/development/hardware-integration/new-shield for more instructions.
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+
+// zmk-config/boards/arm/k03_v2/k03_v2.keymap
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        // Слой BASE
+        base_layer {
+            bindings = <
+                &kp GRAVE   &kp 1    &kp 2    &kp 3    &kp 4    &kp 5      &kp 6    &kp 7    &kp 8    &kp 9    &kp 0    &kp BACKSPACE
+                &kp ESC     &kp Q    &kp W    &kp E    &kp R    &kp T      &kp Y    &kp U    &kp I    &kp O    &kp P    &kp BACKSLASH
+                &kp TAB     &kp A    &kp S    &kp D    &kp F    &kp G      &kp H    &kp J    &kp K    &kp L    &kp SEMICOLON &kp QUOTE
+                &kp LEFT_SHIFT &kp Z &kp X    &kp C    &kp V    &kp B      &kp N    &kp M    &kp COMMA &kp DOT &kp SLASH &kp RIGHT_SHIFT
+                &kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &mo LOWER &kp SPACE &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp ENTER &mo RAISE &kp RIGHT_GUI &kp RIGHT_ALT &kp RIGHT_CONTROL
+            >;
+        };
+
+        // Слой LOWER
+        lower_layer {
+            bindings = <
+                &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12
+                &none &none &kp HOME &kp UP &kp END &kp INSERT &kp PAGE_UP &kp 7 &kp 8 &kp 9 &none &none
+                &none &none &kp LEFT &kp DOWN &kp RIGHT &kp ENTER &kp PAGE_DOWN &kp 4 &kp 5 &kp 6 &none &none
+                &none &none &none &kp CAPSLOCK &none &kp DELETE &kp PRINT_SCREEN &kp 1 &kp 2 &kp 3 &none &none
+                &none &none &none &none &none &none &none &none &mo ADJUST &none &kp 0 &none
+            >;
+        };
+
+        // Слой RAISE
+        raise_layer {
+            bindings = <
+                &none &none &kp AT &kp DOLLAR &kp HASH &none &none &none &kp CARET &none &none &none
+                &none &none &kp LESS_THAN &kp EQUAL &kp GREATER_THAN &kp GRAVE &none &kp LEFT_BRACKET &kp UNDERSCORE &kp RIGHT_BRACKET &none &none
+                &none &kp BACKSLASH &kp LEFT_PAREN &kp MINUS &kp RIGHT_PAREN &kp PLUS &kp PERCENT &kp LEFT_CURLY_BRACE &kp SEMICOLON &kp RIGHT_CURLY_BRACE &kp EXCLAMATION &none
+                &none &none &kp ASTERISK &kp COLON &kp SLASH &none &none &kp PIPE &kp TILDE &kp AMPERSAND &none &none
+                &none &none &none &mo ADJUST &none &none &none &none &none &none &none &none
+            >;
+        };
+
+        // Слой ADJUST
+        adjust_layer {
+            bindings = <
+                &bootloader &none &none &none &none &none &none &none &none &none &none &none
+                &none &none &none &none &none &none &none &none &none &none &dynamic_macro_play1 &dynamic_macro_record1
+                &none &none &none &none &none &none &none &kp VOLUME_DOWN &kp MUTE &kp VOLUME_UP &dynamic_macro_play2 &dynamic_macro_record2
+                &none &none &none &none &none &caps_word_toggle &none &kp MEDIA_PREV &kp MEDIA_PLAY_PAUSE &kp MEDIA_NEXT &none &dynamic_macro_reset
+                &none &none &none &none &none &none &none &none &none &none &none &none
+            >;
+        };
+    };
+};
+

@@ -2,17 +2,20 @@
 # See https://docs.zephyrproject.org/3.5.0/hardware/porting/board_porting.html#write-kconfig-files
 # for more information.
 
-if BOARD_K03_LEFT
 
+if BOARD_K03
 config ZMK_KEYBOARD_NAME
-    default "k03"
-
-config ZMK_SPLIT_ROLE_CENTRAL
+    string
+    default "K:03"
+config ZMK_USB
+    bool
     default y
+config ZMK_BLE
+    bool
+    default n
+endif
 
-endif # BOARD_K03_LEFT
-
-if BOARD_K03_LEFT || BOARD_K03_RIGHT
+if BOARD_K03
 
 if USB
 

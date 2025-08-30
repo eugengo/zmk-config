@@ -2,7 +2,7 @@
 # See https://docs.zephyrproject.org/3.5.0/hardware/porting/board_porting.html#write-kconfig-files
 # for more information.
 
-if BOARD_K03_LEFT || BOARD_K03_RIGHT
+if BOARD_K03
 
 # Define any board-specific Kconfig options here.
 # If there are none, you may delete this file.

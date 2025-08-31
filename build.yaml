@@ -1,4 +1,8 @@
 ---
 include:
-  - board: k03h
-    shield: settings_reset
+  - board: k03
+    artifact-name: k03_left
+
+  - board: k03
+    artifact-name: k03_right
+

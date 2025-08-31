@@ -19,8 +19,5 @@ kscan0: kscan {
     debounce-press-ms = <5>;
     debounce-release-ms = <5>;
 };
-    &split0 {
-        split-role = "central";   /* левая половина = ведущая */
-    };
-};
+   };
 

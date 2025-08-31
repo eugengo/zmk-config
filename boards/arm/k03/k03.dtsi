@@ -26,47 +26,47 @@
     //};
 
     /* ================= Split ================= */
-    split0: split {
-        compatible = "zmk,split";
+    //split0: split {
+        //compatible = "zmk,split";
         // left = центральный, right = периферия
-        split-role = "central";
-        hand-detect-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+        //split-role = "central";
+        //hand-detect-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
 
-        uart {
-            tx-pin = <0>;   // SERIAL_USART_TX_PIN
-            rx-pin = <1>;   // SERIAL_USART_RX_PIN
-        };
-    };
+        //uart {
+            //tx-pin = <0>;   // SERIAL_USART_TX_PIN
+            //rx-pin = <1>;   // SERIAL_USART_RX_PIN
+        //};
+    //};
 
     /* ================= OLED ================= */
-    &i2c1 {
-        status = "okay";
-        scl-pin = <3>;   // I2C1_SCL_PIN
-        sda-pin = <2>;   // I2C1_SDA_PIN
+    //&i2c1 {
+        //status = "okay";
+        //scl-pin = <3>;   // I2C1_SCL_PIN
+        //sda-pin = <2>;   // I2C1_SDA_PIN
 
-        oled0: ssd1306@3c {
-            compatible = "solomon,ssd1306fb";
-            reg = <0x3c>;
-            width = <128>;
-            height = <32>;
-        };
-    };
+        //oled0: ssd1306@3c {
+            //compatible = "solomon,ssd1306fb";
+            //reg = <0x3c>;
+            //width = <128>;
+            //height = <32>;
+        //};
+    //};
 
     /* ================= RGB ================= */
-    ws2812: rgb {
-        compatible = "zmk,ws2812";
-        label = "RGB";
-        chain-length = <2>;          
-        data-gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>; 
-        spi-max-frequency = <4000000>;
+    //ws2812: rgb {
+        //compatible = "zmk,ws2812";
+        //label = "RGB";
+        //chain-length = <2>;          
+        //data-gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>; 
+        //spi-max-frequency = <4000000>;
     };
 
     /* ================= Encoder ================= */
-    rotary0: encoder {
-        compatible = "zmk,rotary-encoder";
-        pin-a = <&gpio0 27 GPIO_ACTIVE_HIGH>;
-        pin-b = <&gpio0 26 GPIO_ACTIVE_HIGH>;
-        resolution = <4>;
-    };
+    //rotary0: encoder {
+      //  compatible = "zmk,rotary-encoder";
+        //pin-a = <&gpio0 27 GPIO_ACTIVE_HIGH>;
+        //pin-b = <&gpio0 26 GPIO_ACTIVE_HIGH>;
+        //resolution = <4>;
+    //};
 };
 

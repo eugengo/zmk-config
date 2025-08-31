@@ -20,8 +20,8 @@
                     <&gpio0 13 GPIO_ACTIVE_LOW>,
                     <&gpio0 14 GPIO_ACTIVE_LOW>;
 
-        //diode-direction = "COL2ROW";   // ← тут строка, а не <...>
-        diode-direction = <1>;  // 0 = UNDEFINED, 1 = COL2ROW, 2 = ROW2COL
+        diode-direction = "col2row";   // ← тут строка, а не <...>
+        //diode-direction = <1>;  // 0 = UNDEFINED, 1 = COL2ROW, 2 = ROW2COL
     };
 
     /* ================= Split ================= */

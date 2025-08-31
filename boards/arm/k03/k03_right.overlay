@@ -1,0 +1,10 @@
+/ {
+    chosen {
+        zephyr,keyboard-scan = &kscan0;
+    };
+
+    &split0 {
+        split-role = "peripheral";   /* правая половина = ведомая */
+    };
+};
+

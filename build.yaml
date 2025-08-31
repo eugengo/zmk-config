@@ -1,7 +1,10 @@
 ---
 include:
   - board: k03
-  - keymap: k03.keymap
-  - dts_overlays:
-    - boards/arm/k03/k03.overlay
+    cmake-args: -DOVERLAY_CONFIG=boards/arm/k03/k03_left.overlay
+    artifact-name: k03_left
+
+  - board: k03
+    cmake-args: -DOVERLAY_CONFIG=boards/arm/k03/k03_right.overlay
+    artifact-name: k03_right
 

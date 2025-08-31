@@ -1,33 +1,34 @@
 /dts-v1/;
 / {
     chosen {
-        zmk,kscan = &kscan0;
+        zephyr,keyboard-scan = &kscan0;
     };
 
     /* ================= Matrix ================= */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
-        row-gpios = <&pio0 4 GPIO_ACTIVE_LOW>,
-                    <&pio0 5 GPIO_ACTIVE_LOW>,
-                    <&pio0 6 GPIO_ACTIVE_LOW>,
-                    <&pio0 7 GPIO_ACTIVE_LOW>,
-                    <&pio0 8 GPIO_ACTIVE_LOW>;
+        row-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>,
+                    <&gpio0 5 GPIO_ACTIVE_LOW>,
+                    <&gpio0 6 GPIO_ACTIVE_LOW>,
+                    <&gpio0 7 GPIO_ACTIVE_LOW>,
+                    <&gpio0 8 GPIO_ACTIVE_LOW>;
 
-        col-gpios = <&pio0 9 GPIO_ACTIVE_LOW>,
-                    <&pio0 10 GPIO_ACTIVE_LOW>,
-                    <&pio0 11 GPIO_ACTIVE_LOW>,
-                    <&pio0 12 GPIO_ACTIVE_LOW>,
-                    <&pio0 13 GPIO_ACTIVE_LOW>,
-                    <&pio0 14 GPIO_ACTIVE_LOW>;
+        col-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>,
+                    <&gpio0 10 GPIO_ACTIVE_LOW>,
+                    <&gpio0 11 GPIO_ACTIVE_LOW>,
+                    <&gpio0 12 GPIO_ACTIVE_LOW>,
+                    <&gpio0 13 GPIO_ACTIVE_LOW>,
+                    <&gpio0 14 GPIO_ACTIVE_LOW>;
 
-        diode-direction = <COL2ROW>;
+        diode-direction = "COL2ROW";   // ← тут строка, а не <...>
     };
 
     /* ================= Split ================= */
     split0: split {
         compatible = "zmk,split";
-        split-role = "central";  // левый или правый
-        hand-detect-gpios = <&pio0 29 GPIO_ACTIVE_LOW>;
+        // left = центральный, right = периферия
+        split-role = "central";
+        hand-detect-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
 
         uart {
             tx-pin = <0>;   // SERIAL_USART_TX_PIN
@@ -50,19 +51,20 @@
     };
 
     /* ================= RGB ================= */
-    &rgb {
+    ws2812: rgb {
         compatible = "zmk,ws2812";
         label = "RGB";
-        chain-length = <2>;          // RGBLIGHT_LED_COUNT
-        data-gpios = <28>;           // ws2812.pin
+        chain-length = <2>;          
+        data-gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>; 
         spi-max-frequency = <4000000>;
     };
 
     /* ================= Encoder ================= */
-    &rotary0 {
+    rotary0: encoder {
         compatible = "zmk,rotary-encoder";
-        pin_a = <27>;
-        pin_b = <26>;
-        resolution = <4>;            // ENCODER_RESOLUTION
+        pin-a = <&gpio0 27 GPIO_ACTIVE_HIGH>;
+        pin-b = <&gpio0 26 GPIO_ACTIVE_HIGH>;
+        resolution = <4>;
     };
 };
+

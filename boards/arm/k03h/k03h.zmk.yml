@@ -16,6 +16,9 @@ url: https://example.com
 features:
   - keys
   - studio  # Remove this line if your keyboard will not support ZMK Studio
+  - oled        # если есть OLED-дисплеи
+  - rgb         # если есть RGB-подсветка
+  - split       # если клавиатура split
 outputs:
   - usb
 #   - ble

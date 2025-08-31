@@ -1,4 +1,4 @@
 ---
 include:
-  - board: k03
+  - board: k03h
     shield: settings_reset

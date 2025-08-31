@@ -9,9 +9,24 @@ arch: arm
 toolchain:
   - zephyr
   - gnuarmemb
+
+# Соответствие SoC
+socs:
+  - rp2040
+
+# Объёмы памяти (в КБ)
+ram: 264
+flash: 2048    # подставь фактический размер SPI Flash, если не 2 MB
+
+# Что реально используем
 supported:
   - usb_device
-#   - adc
-#   - ble
-#   - pwm
-#   - watchdog
+  - gpio
+  - i2c
+  - uart
+  - watchdog
+# По желанию:
+# vendor: ergohaven
+# revision:
+#   - name: default
+

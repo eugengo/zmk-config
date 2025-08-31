@@ -2,7 +2,23 @@
     chosen {
         zmk, kscan = &kscan0;
     };
-
+kscan0: kscan {
+    compatible = "zmk,kscan-gpio-matrix";
+    row-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>,
+                <&gpio0 5 GPIO_ACTIVE_LOW>,
+                <&gpio0 6 GPIO_ACTIVE_LOW>,
+                <&gpio0 7 GPIO_ACTIVE_LOW>,
+                <&gpio0 8 GPIO_ACTIVE_LOW>;
+    col-gpios = <&gpio0 9  GPIO_ACTIVE_LOW>,
+                <&gpio0 10 GPIO_ACTIVE_LOW>,
+                <&gpio0 11 GPIO_ACTIVE_LOW>,
+                <&gpio0 12 GPIO_ACTIVE_LOW>,
+                <&gpio0 13 GPIO_ACTIVE_LOW>,
+                <&gpio0 14 GPIO_ACTIVE_LOW>;
+    diode-direction = "col2row";
+    debounce-press-ms = <5>;
+    debounce-release-ms = <5>;
+};
     &split0 {
         split-role = "central";   /* левая половина = ведущая */
     };

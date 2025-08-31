@@ -1,6 +1,6 @@
 / {
     chosen {
-        zephyr,keyboard-scan = &kscan0;
+        zmk, kscan = &kscan0;
     };
 
     &split0 {

@@ -1,8 +1,8 @@
 ---
 include:
-  - board: k03
-    artifact-name: k03_left
+  - board: k03h
+    artifact-name: k03h_left
 
-  - board: k03
-    artifact-name: k03_right
+  - board: k03h
+    artifact-name: k03h_right
 

@@ -1,30 +1,10 @@
-# This file was generated from a template. Edit it to match your keyboard.
-# See https://docs.zephyrproject.org/3.5.0/hardware/porting/board_porting.html#write-kconfig-files
-# for more information.
+config BOARD_K03H_LEFT
+    bool "k03h left"
+    depends on SOC_RP2040
+    select SOC_RP2040
 
-if BOARD_K03H_LEFT
+config BOARD_K03H_RIGHT
+    bool "k03h right"
+    depends on SOC_RP2040
+    select SOC_RP2040
 
-config ZMK_KEYBOARD_NAME
-    default "k03h"
-
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
-endif # BOARD_K03H_LEFT
-
-if BOARD_K03H_LEFT || BOARD_K03H_RIGHT
-
-if USB
-
-config USB_NRFX
-    default y
-
-config USB_DEVICE_STACK
-    default y
-
-endif # USB
-
-# config BT_CTLR
-#     default BT
-
-endif # BOARD_K03H_LEFT || BOARD_K03H_RIGHT

@@ -1,0 +1,17 @@
+// This file was generated from a template. Edit it to match your keyboard.
+// See https://zmk.dev/docs/development/hardware-integration/new-shield for more
+// instructions.
+
+#include "k03h.dtsi"
+#include "k03h_left-pinctrl.dtsi"
+
+&kscan {
+    col-gpios = <&gpio0 9 GPIO_ACTIVE_LOW>,
+                <&gpio0 10 GPIO_ACTIVE_LOW>,
+                <&gpio0 11 GPIO_ACTIVE_LOW>,
+                <&gpio0 12 GPIO_ACTIVE_LOW>,
+                <&gpio0 13 GPIO_ACTIVE_LOW>,
+                <&gpio0 14 GPIO_ACTIVE_LOW>;
+    // Если row-gpios одинаковы для обеих половин, их не нужно переопределять.
+    hand-detect-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>; // если нужно
+};

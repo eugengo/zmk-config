@@ -1,6 +1,8 @@
 ---
 include:
-  - board: k03h
+  - board: raspberrypi_pico
     artifact-name: k03h_left
 
+  - board: raspberrypi_pico
+    artifact-name: k03h_right
 

@@ -17,13 +17,6 @@
             >;
 
             display-name = "Base";
-            sensor-bindings =
-                <&enc_vol>,
-                <&enc_vol>,
-                <&enc_vol>,
-                <&enc_vol>,
-                <&enc_vol>,
-                <&enc_vol>;
         };
 
         nav {

@@ -1,0 +1,33 @@
+/dts-v1/;
+#include <dt-bindings/zmk/matrix_transform.h>
+
+#include "k03h-pinctrl.dtsi"
+#include "k03h-layouts.dtsi"
+
+ / {
+    model = "k03h";
+    compatible = "k03h";
+
+    chosen {
+        zmk,physical-layout = &k03h_physical_layout;
+    };
+
+    kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+        wakeup-source;
+
+        row-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>,
+                    <&gpio0 5 GPIO_ACTIVE_LOW>,
+                    <&gpio0 6 GPIO_ACTIVE_LOW>,
+                    <&gpio0 7 GPIO_ACTIVE_LOW>,
+                    <&gpio0 8 GPIO_ACTIVE_LOW>;
+    };
+
+    default_transform: default_transform {
+        compatible = "zmk,matrix-transform";
+        columns = <6>;
+        rows = <5>;
+    };
+};
+

@@ -1,14 +1,22 @@
-name: Build K03H Firmware
-on: [push]
+name: Build User Config
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: 3.12
+
       - name: Setup ZMK
         run: |
           git clone --branch main https://github.com/zmkfirmware/zmk.git zmk
@@ -16,10 +24,14 @@ jobs:
           west init -l app
           west update
           pip install -r scripts/requirements.txt
+
       - name: Build Left Half
         run: |
-          west build -s zmk/app -b k03h -- -DZMK_CONFIG=$PWD/config -DZMK_EXTRA_MODULES=$PWD
+          cd zmk
+          west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE
+
       - name: Build Right Half
         run: |
-          west build -s zmk/app -b k03h -- -DZMK_CONFIG=$PWD/config -DZMK_EXTRA_MODULES=$PWD -DOVERLAY=$PWD/k03h_right.dts
+          cd zmk
+          west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE -DOVERLAY=$GITHUB_WORKSPACE/k03h_right.dts
 

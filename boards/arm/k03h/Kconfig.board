@@ -3,8 +3,5 @@ config BOARD_K03H_LEFT
     depends on SOC_RP2040
     select SOC_RP2040
 
-config BOARD_K03H_RIGHT
-    bool "k03h right"
-    depends on SOC_RP2040
-    select SOC_RP2040
+
 

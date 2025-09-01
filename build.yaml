@@ -8,7 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        side: [left, right]  # не name!
     steps:
       - uses: actions/checkout@v3
 
@@ -25,13 +27,12 @@ jobs:
           west update
           pip install -r scripts/requirements.txt
 
-      - name: Build Left Half
+      - name: Build ${{ matrix.side }} half
         run: |
           cd zmk
-          west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE
-
-      - name: Build Right Half
-        run: |
-          cd zmk
-          west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE -DOVERLAY=$GITHUB_WORKSPACE/k03h_right.dts
+          if [ "${{ matrix.side }}" = "left" ]; then
+              west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE -DOVERLAY=$GITHUB_WORKSPACE/k03h_left.dts
+          else
+              west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE -DOVERLAY=$GITHUB_WORKSPACE/k03h_right.dts
+          fi
 

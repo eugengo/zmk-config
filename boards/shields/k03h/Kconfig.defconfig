@@ -1,10 +1,8 @@
-# zmk-config/boards/shields/k03h/Kconfig.defconfig
-config ZMK_SPLIT
+config SHIELD_K03H_LEFT
+    bool "k03h left"
     default y
 
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y if SHIELD_K03H_LEFT
-
-config ZMK_SPLIT_ROLE_PERIPHERAL
-    default y if SHIELD_K03H_RIGHT
+config SHIELD_K03H_RIGHT
+    bool "k03h right"
+    default y
 

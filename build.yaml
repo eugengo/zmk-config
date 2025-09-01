@@ -1,38 +1,8 @@
-name: Build User Config
+---
+include:
+  - board: k03h
+    artifact-name: k03h_left
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        side: [left, right]  # не name!
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.12
-
-      - name: Setup ZMK
-        run: |
-          git clone --branch main https://github.com/zmkfirmware/zmk.git zmk
-          cd zmk
-          west init -l app
-          west update
-          pip install -r scripts/requirements.txt
-
-      - name: Build ${{ matrix.side }} half
-        run: |
-          cd zmk
-          if [ "${{ matrix.side }}" = "left" ]; then
-              west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE -DOVERLAY=$GITHUB_WORKSPACE/k03h_left.dts
-          else
-              west build -s app -b k03h -- -DZMK_CONFIG=$GITHUB_WORKSPACE/config -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE -DOVERLAY=$GITHUB_WORKSPACE/k03h_right.dts
-          fi
+  - board: k03h
+    artifact-name: k03h_right
 

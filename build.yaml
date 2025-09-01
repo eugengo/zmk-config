@@ -6,3 +6,4 @@ include:
   - board: k03h
     artifact-name: k03h_right
 
+  - board: rpi_pico

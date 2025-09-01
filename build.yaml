@@ -2,7 +2,9 @@
 include:
   - board: k03h
     artifact-name: k03h_left
+    defconfig: k03h_left_defconfig
 
   - board: k03h
     artifact-name: k03h_right
+    defconfig: k03h_right_defconfig
 

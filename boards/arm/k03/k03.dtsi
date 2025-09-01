@@ -6,12 +6,12 @@
 /dts-v1/;
 #include <dt-bindings/zmk/matrix_transform.h>
 
-#include "k03h-pinctrl.dtsi"
-#include "k03h-layouts.dtsi"
+#include "k03-pinctrl.dtsi"
+#include "k03-layouts.dtsi"
 
 / {
-    model = "k03h";
-    compatible = "k03h";
+    model = "k03";
+    compatible = "k03";
 
     chosen {
         zmk,physical-layout = &default_layout;
@@ -31,12 +31,22 @@
 
         // Replace these comments with the GPIO pins in the matrix.
         // See https://zmk.dev/docs/development/hardware-integration/new-shield#shield-overlays
-        row-gpios = <&gpio0 4 GPIO_ACTIVE_LOW>,
-                    <&gpio0 5 GPIO_ACTIVE_LOW>,
-                    <&gpio0 6 GPIO_ACTIVE_LOW>,
-                    <&gpio0 7 GPIO_ACTIVE_LOW>,
-                    <&gpio0 8 GPIO_ACTIVE_LOW>;
+        row-gpios
+            = <&gpio0 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            , <&gpio0 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+            ;
     };
 
-    
+    default_transform: default_transform {
+        // See https://zmk.dev/docs/development/hardware-integration/new-shield#matrix-transform
+        // for how to configure this
+        compatible = "zmk,matrix-transform";
+        columns = <4>;
+        rows = <2>;
+
+        map = <
+            RC(0, 0) RC(0, 1)    RC(0, 2) RC(0, 3)
+            RC(1, 0) RC(1, 1)    RC(1, 2) RC(1, 3)
+        >;
+    };
 };

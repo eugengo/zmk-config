@@ -1,8 +1,0 @@
-config SHIELD_K03H_LEFT
-    bool "k03h left"
-    default y
-
-config SHIELD_K03H_RIGHT
-    bool "k03h right"
-    default y
-

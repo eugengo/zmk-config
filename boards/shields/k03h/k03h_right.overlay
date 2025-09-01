@@ -1,16 +1,30 @@
 #include "k03h.dtsi"
 #include "k03h_right-pinctrl.dtsi"
 
-&default_transform {
-    col-offset = <6>;
-};
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+    };
 
-&kscan {
-    col-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>,
-                <&gpio0 16 GPIO_ACTIVE_LOW>,
-                <&gpio0 17 GPIO_ACTIVE_LOW>,
-                <&gpio0 18 GPIO_ACTIVE_LOW>,
-                <&gpio0 19 GPIO_ACTIVE_LOW>,
-                <&gpio0 20 GPIO_ACTIVE_LOW>;
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row";
+
+        rows = <5>;
+        cols = <6>;
+
+        row-gpios = <&gpio0 4 (GPIO_ACTIVE_HIGH)>,  /* GP4 */
+                    <&gpio0 5 (GPIO_ACTIVE_HIGH)>,  /* GP5 */
+                    <&gpio0 6 (GPIO_ACTIVE_HIGH)>,  /* GP6 */
+                    <&gpio0 7 (GPIO_ACTIVE_HIGH)>,  /* GP7 */
+                    <&gpio0 8 (GPIO_ACTIVE_HIGH)>;  /* GP8 */
+
+        col-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH)>,   /* GP9  */
+                    <&gpio0 10 (GPIO_ACTIVE_HIGH)>,  /* GP10 */
+                    <&gpio0 11 (GPIO_ACTIVE_HIGH)>,  /* GP11 */
+                    <&gpio0 12 (GPIO_ACTIVE_HIGH)>,  /* GP12 */
+                    <&gpio0 13 (GPIO_ACTIVE_HIGH)>,  /* GP13 */
+                    <&gpio0 14 (GPIO_ACTIVE_HIGH)>;  /* GP14 */
+    };
 };
 

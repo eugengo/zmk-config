@@ -2,7 +2,10 @@
 include:
   - board: raspberrypi_pico
     artifact-name: k03h_left
+    overlay: k03h_left.overlay
 
   - board: raspberrypi_pico
     artifact-name: k03h_right
+    overlay: k03h_right.overlay
+
 

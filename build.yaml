@@ -1,6 +1,6 @@
 ---
 include:
-  - board: rpi_pico
+  - board: k03
     shield: k03h_left
     artifact-name: k03h_left
   - board: rpi_pico

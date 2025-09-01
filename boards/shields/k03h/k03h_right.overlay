@@ -1,5 +1,5 @@
-#include "k03h.dtsi"
-#include "k03h_right-pinctrl.dtsi"
+//#include "k03h.dtsi"
+//#include "k03h_right-pinctrl.dtsi"
 
 / {
     chosen {

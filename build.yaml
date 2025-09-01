@@ -1,11 +1,9 @@
 ---
 include:
   - board: rpi_pico
+    shield: k03h_left
     artifact-name: k03h_left
-    overlay: k03h_left.overlay
-
   - board: rpi_pico
+    shield: k03h_right
     artifact-name: k03h_right
-    overlay: k03h_right.overlay
-
 
